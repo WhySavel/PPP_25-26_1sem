@@ -1,8 +1,16 @@
 import random
 mx = 0
 mn = 9999
-st = int(input('Введите количество учеников: '))
-cl = int(input('Введите количество предметов: '))
+while True:
+    try:
+        st = int(input('Введите количество предметов: '))
+        cl = int(input('Введите количество учеников: '))
+        break
+    except:
+        print('Вам нужно ввести число')
+if st < 1 or cl < 1:
+    st = abs(st)
+    cl = abs(cl)
 a = [[random.randint(1, 5) for x in range(st)] for y in range(cl)]
 ans = []
 for i in range(len(a)):
@@ -11,5 +19,5 @@ for i in range(len(a)):
         mx = max(a[i])
         mn = min(a[i])
     ans.append(sr)
-    print('студент',i + 1, a[i], mx, mn, sr)
+    print('студент', i + 1, a[i], mx, mn, sr)
 print(ans.index(max(ans)) + 1, ans.index(min(ans)) + 1)
